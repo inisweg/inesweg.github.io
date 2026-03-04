@@ -44,10 +44,6 @@
         .start-item { padding: 8px 15px; display: flex; align-items: center; gap: 10px; text-decoration: none; color: #333; font-size: 13px; cursor: pointer; }
         .start-item:hover { background-color: #2f71cd; color: white; }
         .start-item img { width: 24px; height: 24px; }
-        .start-menu-footer { background: linear-gradient(to right, #1a449e, #3a93ff); padding: 8px 10px; display: flex; justify-content: flex-end; gap: 15px; }
-        .footer-btn { display: flex; align-items: center; gap: 5px; color: white; font-size: 12px; cursor: pointer; }
-        .footer-btn:hover { text-decoration: underline; }
-        .footer-btn img { width: 20px; height: 20px; }
 
         /* Taskbar */
         .taskbar {
@@ -64,11 +60,10 @@
         .start-btn:hover { background: linear-gradient(to bottom, #42b842, #1f851f); }
         .taskbar-time { margin-left: auto; color: white; font-size: 12px; padding: 0 15px; border-left: 1px solid #1a449e; background: #0b93d5; height: 100%; display: flex; align-items: center; }
 
-        /* XP Windows - Cleaned up and set to 50% */
+        /* XP Windows (Set to 50% screen size) */
         .window {
             position: absolute; 
-            width: 50vw; /* 50% of viewport width */
-            height: 50vh; /* 50% of viewport height */
+            width: 50vw; height: 50vh; 
             background-color: #ece9d8; border: 3px solid #0058e6;
             border-radius: 8px 8px 0 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
             display: none; flex-direction: column; z-index: 10;
@@ -92,64 +87,65 @@
         }
         .address-input { flex-grow: 1; border: 1px solid #7f9db9; padding: 2px 5px; background: white; color: #333; }
 
-        /* Window Content - Fills the 50vh height perfectly */
+        /* Content Area (Handles the scrolling!) */
         .window-content { 
             padding: 20px; flex-grow: 1; border: 1px solid #aaa; margin: 5px; 
             background: white; overflow-y: auto; user-select: text;
         }
 
-        /* --- WEB 1.0 THEMES (Contained purely within the window content) --- */
+        /* --- MEDIA STYLING --- */
+        .media-wrapper {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background for contrast in dark themes */
+            border: 2px inset rgba(150, 150, 150, 0.5); /* Classic Web 1.0 inset border */
+            text-align: center;
+        }
+        /* Make sure images and videos don't break out of the 50vw window */
+        .media-wrapper img, .media-wrapper video {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #000;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+        }
+        /* Audio players stretch to fill the wrapper nicely */
+        .media-wrapper audio {
+            width: 100%;
+            margin-top: 10px;
+            outline: none;
+        }
+        .media-caption {
+            display: block;
+            margin-top: 8px;
+            font-size: 11px;
+            font-style: italic;
+            opacity: 0.8;
+        }
 
-        /* 1. About Me (Clean Classic Web) */
+        /* --- THEMES --- */
         .theme-about { font-family: 'Verdana', sans-serif; color: #333; }
         .theme-about h2 { color: #0058e6; border-bottom: 2px dotted #ccc; padding-bottom: 5px; margin-bottom: 15px; }
-        .theme-about p { font-size: 13px; line-height: 1.6; margin-bottom: 15px; }
-
-        /* 2. Analog Archives (Autumnal, Forest Green, Deep Purple, Cassette) */
+        
         .theme-analog { 
-            background-color: #1a3c34; /* Deep forest green */
-            color: #e8dcc5; /* Warm off-white/autumnal */
-            font-family: 'Times New Roman', serif; 
-            border: 4px double #4a192c; /* Deep purple border inside */
+            background-color: #1a3c34; color: #e8dcc5; font-family: 'Times New Roman', serif; border: 4px double #4a192c; 
         }
-        .theme-analog h2 { color: #d99a5a; /* Autumnal orange/gold */ font-style: italic; border-bottom: 1px solid #4a192c; padding-bottom: 5px; margin-bottom: 15px; font-weight: normal; }
-        .theme-analog p { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+        .theme-analog h2 { color: #d99a5a; font-style: italic; border-bottom: 1px solid #4a192c; padding-bottom: 5px; margin-bottom: 15px; font-weight: normal; }
 
-        /* 3. URN 1350 (University Radio Web 1.0 Style) */
-        .theme-urn {
-            background-color: #ffffff; color: #000000;
-            font-family: 'Arial', sans-serif;
-            border-top: 15px solid #cc0000; /* Bold red radio header */
-        }
+        .theme-urn { background-color: #ffffff; color: #000000; font-family: 'Arial', sans-serif; border-top: 15px solid #cc0000; }
         .theme-urn h2 { color: #cc0000; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; font-size: 24px; }
         .theme-urn .sub-head { background: #000; color: #fff; padding: 3px 5px; font-size: 11px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
-        .theme-urn p { font-size: 13px; line-height: 1.4; margin-bottom: 10px; }
 
-        /* 4. Uni Work (MS-DOS / Terminal) */
-        .theme-dos {
-            background-color: #000000; color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 10px;
-        }
+        .theme-dos { background-color: #000000; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 10px; }
         .theme-dos p, .theme-dos h2 { color: #00ff00; font-size: 14px; line-height: 1.2; margin-bottom: 5px; font-weight: normal; }
-        .cursor-blink { animation: blink 1s step-end infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* 5. Gigs (Broadway / West End) */
+        
         .theme-broadway {
-            background-color: #4a0404; /* Deep theater red */
-            color: #ffffff;
-            font-family: 'Georgia', serif;
-            border: 2px solid #b8860b; /* Dark goldenrod */
+            background-color: #4a0404; color: #ffffff; font-family: 'Georgia', serif; border: 2px solid #b8860b; 
             background-image: radial-gradient(circle, #5c0a0a 0%, #2e0000 100%);
         }
         .theme-broadway h2 { 
-            color: #ffd700; /* Gold */ 
-            text-align: center; text-transform: uppercase; letter-spacing: 2px;
-            border-bottom: 1px solid #ffd700; padding-bottom: 10px; margin-bottom: 15px;
-            text-shadow: 1px 1px 2px #000;
+            color: #ffd700; text-align: center; text-transform: uppercase; letter-spacing: 2px;
+            border-bottom: 1px solid #ffd700; padding-bottom: 10px; margin-bottom: 15px; text-shadow: 1px 1px 2px #000;
         }
-        .theme-broadway p { font-size: 14px; line-height: 1.6; margin-bottom: 15px; text-align: justify; }
 
     </style>
 </head>
@@ -188,8 +184,16 @@
         </div>
         <div class="window-content theme-about">
             <h2>About Me</h2>
+            
+            <div class="media-wrapper">
+                <img src="https://images.unsplash.com/photo-1531297172867-4f50f1636831?q=80&w=400&auto=format&fit=crop" alt="Me at work">
+                <span class="media-caption">Me, hard at work compiling HTML tables (Circa 2002)</span>
+            </div>
+
             <p>Hello! I am a highly professional individual building cool things on the internet.</p>
             <p>Welcome to my desktop. Feel free to drag the windows around, explore my projects, and experience a cleaner slice of Web 1.0 nostalgia.</p>
+            <p>Scroll down my folders to see videos, audio players, and more!</p>
+            <br><br><br><br> <p><em>End of document.</em></p>
         </div>
     </div>
 
@@ -204,7 +208,24 @@
         <div class="window-content theme-analog">
             <h2>The Analog Archives</h2>
             <p>Welcome to the digital preservation of analog dreams. I collect sounds, tapes, and forgotten media.</p>
-            <p>This space is dedicated to the warm hiss of magnetic tape and the tactile feel of physical media.</p>
+            
+            <div class="media-wrapper">
+                <img src="https://images.unsplash.com/photo-1514300366113-68fb4f141bc2?q=80&w=400&auto=format&fit=crop" alt="Cassette tapes">
+                <span class="media-caption">From my personal mixtape collection.</span>
+            </div>
+
+            <p>Below is a sample of some audio restoration work I did recently.</p>
+
+            <div class="media-wrapper">
+                <strong>Tape Hiss & Ambience Mix</strong>
+                <audio controls>
+                    <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <span class="media-caption">Hit play to transport your ears.</span>
+            </div>
+            <br><br><br>
         </div>
     </div>
 
@@ -219,8 +240,21 @@
         <div class="window-content theme-urn">
             <h2>URN 1350</h2>
             <div class="sub-head">STUDENT RADIO FOR NOTTINGHAM</div>
-            <p>Broadcasting live from the University of Nottingham. This window captures the clean, bold, blocky energy of classic student radio web design.</p>
-            <p>Check out my show schedule, listen to past broadcasts, and explore my audio production work here.</p>
+            
+            <div class="media-wrapper">
+                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=400&auto=format&fit=crop" alt="Radio Studio">
+                <span class="media-caption">Live from the broadcast booth!</span>
+            </div>
+
+            <p>Broadcasting live from the University of Nottingham. Check out my latest segment below!</p>
+            
+            <div class="media-wrapper">
+                <strong>Morning Show Interview Snippet</strong>
+                <audio controls>
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            <br><br><br>
         </div>
     </div>
 
@@ -230,20 +264,18 @@
             <div class="close-btn" onclick="closeWindow('dosWindow')">X</div>
         </div>
         <div class="window-content theme-dos">
-            <p>Microsoft(R) Windows DOS</p>
-            <p>(C)Copyright Microsoft Corp 1990-2001.</p>
-            <br>
             <p>C:\> CD UNI_WORK</p>
-            <p>C:\UNI_WORK> DIR</p>
+            <p>C:\UNI_WORK> TYPE PROJECT_INFO.TXT</p>
             <br>
-            <p> Volume in drive C is WORK_DRIVE</p>
-            <p> Directory of C:\UNI_WORK</p>
-            <br>
-            <p>ESSAY1~1.DOC   1,234,567 11-12-00  Essay</p>
-            <p>PROJECT~1.CPP     45,678 10-01-01  Code</p>
-            <p>     2 File(s)    1,280,245 bytes</p>
-            <br>
-            <p>C:\UNI_WORK> <span class="cursor-blink">_</span></p>
+            <p>Here is an example of an algorithm diagram I created for my final year project:</p>
+
+            <div class="media-wrapper" style="border-color: #00ff00; background: #002200;">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=400&auto=format&fit=crop" alt="Code block" style="filter: grayscale(100%) contrast(150%); border-color: #00ff00;">
+                <span class="media-caption" style="color: #00ff00;">[FIG 1.1 - ALGORITHM RENDER]</span>
+            </div>
+
+            <p>C:\UNI_WORK> _</p>
+            <br><br><br>
         </div>
     </div>
 
@@ -258,7 +290,18 @@
         <div class="window-content theme-broadway">
             <h2>Live on Stage</h2>
             <p>Welcome to the showcase of my live performances, theatrical sound design, and gig portfolio.</p>
-            <p>Direct from the West End, this section highlights the projects where the spotlight shines brightest, combining deep theater aesthetics with classic web typography.</p>
+            
+            <div class="media-wrapper">
+                <strong>Showreel: Live Sound Mixing</strong><br><br>
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+                <span class="media-caption">Highlights from the 2023 tour run.</span>
+            </div>
+
+            <p>Direct from the West End, this section highlights the projects where the spotlight shines brightest.</p>
+            <br><br><br>
         </div>
     </div>
 
@@ -277,20 +320,17 @@
 
     <div class="taskbar">
         <button class="start-btn" id="startBtn" onclick="toggleStartMenu()">
-            <img src="https://img.icons8.com/color/24/000000/windows-logo.png" alt="win" style="margin-right: 5px;">
-            Start
+            <img src="https://img.icons8.com/color/24/000000/windows-logo.png" alt="win" style="margin-right: 5px;"> Start
         </button>
         <div class="taskbar-time" id="clock">12:00 PM</div>
     </div>
 
     <script>
         let highestZ = 10;
-
         function toggleStartMenu() {
             const menu = document.getElementById('startMenu');
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
-
         document.addEventListener('click', function(event) {
             const menu = document.getElementById('startMenu');
             const btn = document.getElementById('startBtn');
@@ -298,16 +338,13 @@
                 menu.style.display = 'none';
             }
         });
-
         function openWindow(id) {
             const win = document.getElementById(id);
             win.style.display = 'flex';
             bringToFront(id);
         }
-
         function closeWindow(id) { document.getElementById(id).style.display = 'none'; }
         function bringToFront(id) { document.getElementById(id).style.zIndex = ++highestZ; }
-
         function makeDraggable(windowEl) {
             let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             const titleBar = windowEl.querySelector('.title-bar');
@@ -327,7 +364,6 @@
             }
             function closeDragElement() { document.onmouseup = null; document.onmousemove = null; }
         }
-
         function updateClock() {
             const now = new Date();
             let h = now.getHours(), m = now.getMinutes();
@@ -335,11 +371,9 @@
             h = h % 12 || 12; m = m < 10 ? '0'+m : m;
             document.getElementById('clock').innerText = h + ':' + m + ' ' + ampm;
         }
-
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
             document.querySelectorAll('.window').forEach(makeDraggable);
-            // Open the 'About Me' window automatically on load
             openWindow('aboutWindow');
         };
     </script>
