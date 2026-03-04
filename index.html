@@ -16,6 +16,7 @@
             height: 100vh;
             overflow: hidden;
             user-select: none;
+            transition: filter 1s ease-in-out; /* Smooth transition for the Easter Egg */
         }
 
         /* Desktop Icons */
@@ -68,6 +69,11 @@
             border-radius: 8px 8px 0 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
             display: none; flex-direction: column; z-index: 10;
         }
+        /* Counter Window gets a smaller custom size */
+        #counterWindow {
+            width: 320px; height: 220px;
+        }
+
         .title-bar {
             background: linear-gradient(to right, #0058e6, #3a93ff);
             color: white; font-weight: bold; font-size: 13px; padding: 5px 10px;
@@ -120,6 +126,33 @@
             opacity: 0.8;
         }
 
+        /* --- HIT COUNTER STYLING --- */
+        .theme-counter {
+            background-color: #c0c0c0; color: #000; font-family: 'Verdana', sans-serif; text-align: center;
+            border: 2px outset #fff;
+        }
+        .theme-counter h2 { font-size: 16px; margin-bottom: 10px; color: #000080; }
+        .odometer-container {
+            display: inline-block;
+            background: #000;
+            border: 4px inset #888;
+            padding: 4px;
+            cursor: crosshair; /* Hint that it's clickable */
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
+        }
+        .digit {
+            display: inline-block;
+            background: #111; color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 28px; font-weight: bold;
+            padding: 2px 6px;
+            border: 1px solid #333;
+            margin: 0 1px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+        }
+        .digit.red { color: #ff0000; } /* Classic red last digit */
+
         /* --- THEMES --- */
         .theme-about { font-family: 'Verdana', sans-serif; color: #333; }
         .theme-about h2 { color: #0058e6; border-bottom: 2px dotted #ccc; padding-bottom: 5px; margin-bottom: 15px; }
@@ -129,7 +162,6 @@
         }
         .theme-analog h2 { color: #d99a5a; font-style: italic; border-bottom: 1px solid #4a192c; padding-bottom: 5px; margin-bottom: 15px; font-weight: normal; }
 
-        /* URN Purple Theme Update */
         .theme-urn { background-color: #ffffff; color: #000000; font-family: 'Arial', sans-serif; border-top: 15px solid #5e2ca5; }
         .theme-urn h2 { color: #5e2ca5; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; font-size: 24px; }
         .theme-urn .sub-head { background: #5e2ca5; color: #fff; padding: 3px 5px; font-size: 11px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
@@ -170,6 +202,31 @@
         <div class="icon" onclick="openWindow('broadwayWindow')">
             <img src="https://img.icons8.com/color/48/000000/theater-curtains.png" alt="Gigs">
             <span>Gigs</span>
+        </div>
+        <div class="icon" onclick="openWindow('counterWindow')">
+            <img src="https://img.icons8.com/color/48/000000/odometer.png" alt="Stats">
+            <span>Visitor Stats</span>
+        </div>
+    </div>
+
+    <div class="window" id="counterWindow" style="top: 5%; left: 60%;">
+        <div class="title-bar" onmousedown="bringToFront('counterWindow')">
+            <span>Website Statistics</span>
+            <div class="close-btn" onclick="closeWindow('counterWindow')">X</div>
+        </div>
+        <div class="window-content theme-counter">
+            <h2>You are visitor number:</h2>
+            
+            <div class="odometer-container" onclick="pokeCounter()">
+                <span class="digit">0</span>
+                <span class="digit">0</span>
+                <span class="digit">1</span>
+                <span class="digit">3</span>
+                <span class="digit" id="count-tens">3</span>
+                <span class="digit red" id="count-ones">7</span>
+            </div>
+            
+            <p style="font-size: 10px; color: #555;">Best viewed in Netscape Navigator 4.0</p>
         </div>
     </div>
 
@@ -345,6 +402,31 @@
 
     <script>
         let highestZ = 10;
+        
+        // EASTER EGG LOGIC
+        let hitCount = 37; // Starting at 1337
+        let pokes = 0;
+
+        function pokeCounter() {
+            hitCount++;
+            pokes++;
+            
+            // Format number to ensure leading zero logic for the last two digits
+            let countStr = hitCount.toString().padStart(2, '0');
+            let tens = countStr[countStr.length - 2];
+            let ones = countStr[countStr.length - 1];
+            
+            document.getElementById('count-tens').innerText = tens;
+            document.getElementById('count-ones').innerText = ones;
+
+            if (pokes === 5) {
+                alert("⚠️ SYSTEM OVERLOAD ⚠️\n\nMaximum pworfessionalism achieved. Entering the Neon Dimension.");
+                // Trippy CSS filter to invert colors and rotate hues 
+                document.body.style.filter = "invert(1) hue-rotate(180deg)";
+            }
+        }
+
+        // Standard XP Window Logic
         function toggleStartMenu() {
             const menu = document.getElementById('startMenu');
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
@@ -392,6 +474,7 @@
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
             document.querySelectorAll('.window').forEach(makeDraggable);
+            openWindow('counterWindow'); // Auto-opens the hit counter
             openWindow('aboutWindow');
         };
     </script>
