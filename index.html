@@ -9,9 +9,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Tahoma', 'Segoe UI', sans-serif;
-            background-color: #008080; /* Classic Windows Teal fallback */
-            /* Replace the URL below with an actual link to the Bliss wallpaper to complete the vibe! */
-            background-image: url('https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png');
+            background-color: #008080;
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/2/21/Bliss_%28Windows_background%29.png');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -20,7 +19,7 @@
         }
 
         /* Desktop Icons */
-        .desktop { padding: 20px; display: flex; flex-direction: column; gap: 20px; height: calc(100vh - 40px); }
+        .desktop { padding: 20px; display: flex; flex-direction: column; flex-wrap: wrap; gap: 20px; height: calc(100vh - 40px); }
         .icon {
             width: 75px; text-align: center; cursor: pointer; color: white;
             text-shadow: 1px 1px 2px black; font-size: 12px;
@@ -32,7 +31,7 @@
         .taskbar {
             position: absolute; bottom: 0; width: 100%; height: 35px;
             background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #1a449e 100%);
-            display: flex; align-items: center; z-index: 9999; border-top: 1px solid #0058e6;
+            display: flex; align-items: center; z-index: 99999; border-top: 1px solid #0058e6;
         }
         .start-btn {
             background: linear-gradient(to bottom, #319A31, #186818); color: white;
@@ -45,7 +44,7 @@
 
         /* XP Windows */
         .window {
-            position: absolute; top: 100px; left: 150px; width: 450px;
+            position: absolute; top: 50px; left: 50px; width: 450px;
             background-color: #ece9d8; border: 3px solid #0058e6;
             border-radius: 8px 8px 0 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
             display: none; flex-direction: column; z-index: 10;
@@ -54,6 +53,7 @@
             background: linear-gradient(to right, #0058e6, #3a93ff);
             color: white; font-weight: bold; font-size: 13px; padding: 5px 10px;
             display: flex; justify-content: space-between; align-items: center;
+            cursor: move; /* Shows the user they can drag it */
         }
         .close-btn {
             background-color: #e81123; color: white; border: 1px solid white; border-radius: 3px;
@@ -61,80 +61,95 @@
             display: flex; justify-content: center; align-items: center;
         }
         .close-btn:hover { background-color: #f05a66; }
-        .window-content { padding: 15px; flex-grow: 1; border: 1px solid #aaa; margin: 5px; background: white; max-height: 400px; overflow-y: auto;}
         
-        /* Media Styling */
-        .media-container { display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        img.portfolio-pic, video { max-width: 100%; border: 1px solid #ccc; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
-        audio { width: 100%; }
-        h3 { font-size: 16px; margin-bottom: 5px; color: #333; }
-        p { font-size: 12px; color: #666; margin-bottom: 10px;}
+        /* Browser-style elements for project windows */
+        .address-bar {
+            background-color: #f4f3ee; border-bottom: 1px solid #ccc; padding: 5px 10px;
+            font-size: 12px; display: flex; align-items: center; gap: 10px; color: #333;
+        }
+        .address-input {
+            flex-grow: 1; border: 1px solid #7f9db9; padding: 2px 5px; background: white; color: #333;
+        }
+
+        .window-content { 
+            padding: 15px; flex-grow: 1; border: 1px solid #aaa; margin: 5px; 
+            background: white; max-height: 400px; overflow-y: auto; user-select: text;
+        }
+        
+        /* Content Styling */
+        h2 { font-size: 18px; color: #0058e6; margin-bottom: 10px; }
+        p { font-size: 13px; color: #333; margin-bottom: 15px; line-height: 1.4; }
+        .browser-content { font-family: 'Times New Roman', serif; } /* Classic 90s web font */
 
     </style>
 </head>
 <body>
 
     <div class="desktop">
-        <div class="icon" onclick="openWindow('videoWindow')">
-            <img src="https://img.icons8.com/color/48/000000/video-file.png" alt="Videos">
-            <span>My Videos</span>
+        <div class="icon" onclick="openWindow('aboutWindow')">
+            <img src="https://img.icons8.com/color/48/000000/info.png" alt="About">
+            <span>About Me</span>
         </div>
-        <div class="icon" onclick="openWindow('photoWindow')">
-            <img src="https://img.icons8.com/color/48/000000/image-file.png" alt="Photos">
-            <span>My Photos</span>
+
+        <div class="icon" onclick="openWindow('project1Window')">
+            <img src="https://img.icons8.com/color/48/000000/folder-invoices--v1.png" alt="Folder">
+            <span>Project 1</span>
         </div>
-        <div class="icon" onclick="openWindow('audioWindow')">
-            <img src="https://img.icons8.com/color/48/000000/audio-file.png" alt="Audio">
-            <span>Sick Tunez</span>
+        <div class="icon" onclick="openWindow('project2Window')">
+            <img src="https://img.icons8.com/color/48/000000/folder-invoices--v1.png" alt="Folder">
+            <span>Project 2</span>
         </div>
     </div>
 
-    <div class="window" id="videoWindow" style="top: 50px; left: 100px;">
-        <div class="title-bar">
-            <span>My Videos</span>
-            <div class="close-btn" onclick="closeWindow('videoWindow')">X</div>
+    <div class="window" id="aboutWindow" style="top: 100px; left: 150px; width: 400px;">
+        <div class="title-bar" onmousedown="bringToFront('aboutWindow')">
+            <span>About Me.txt - Notepad</span>
+            <div class="close-btn" onclick="closeWindow('aboutWindow')">X</div>
         </div>
-        <div class="window-content media-container">
-            <div>
-                <h3>My Pworfessional Video</h3>
-                <p>Behold my moving pictures.</p>
-                <video controls>
-                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                    Your browser does not support HTML video.
-                </video>
-            </div>
+        <div class="window-content" style="font-family: 'Courier New', Courier, monospace;">
+            <p>Hello world!</p>
+            <p>I am a highly pworfessional individual who builds cool things on the internet.</p>
+            <p>Click the folders on the desktop to see my traditional web projects, or drag these windows around because it is extremely satisfying.</p>
         </div>
     </div>
 
-    <div class="window" id="photoWindow" style="top: 80px; left: 180px;">
-        <div class="title-bar">
-            <span>My Photos</span>
-            <div class="close-btn" onclick="closeWindow('photoWindow')">X</div>
+    <div class="window" id="project1Window" style="top: 150px; left: 250px; width: 550px;">
+        <div class="title-bar" onmousedown="bringToFront('project1Window')">
+            <span>My Awesome Project - Microsoft Internet Explorer</span>
+            <div class="close-btn" onclick="closeWindow('project1Window')">X</div>
         </div>
-        <div class="window-content media-container">
-            <div>
-                <h3>A Very Nice Photo</h3>
-                <p>Look at this distinguished image.</p>
-                <img class="portfolio-pic" src="https://images.unsplash.com/photo-1541513280068-07b140af9ce6?q=80&w=400&auto=format&fit=crop" alt="Placeholder Puppy">
-            </div>
+        <div class="address-bar">
+            <span>Address</span>
+            <div class="address-input">http://www.myportfolio.com/projects/awesome.html</div>
+        </div>
+        <div class="window-content browser-content">
+            <h2>Welcome to Project 1</h2>
+            <hr>
+            <br>
+            <p>This is where you can describe your first project. Notice how it uses Times New Roman to look like an old-school HTML webpage loaded inside the XP window.</p>
+            <p>You can add images, links, or lists here just like a normal webpage.</p>
+            <ul>
+                <li>Feature A</li>
+                <li>Feature B</li>
+                <li>Utter brilliance</li>
+            </ul>
         </div>
     </div>
 
-    <div class="window" id="audioWindow" style="top: 120px; left: 250px;">
-        <div class="title-bar">
-            <span>Sick Tunez (Audio)</span>
-            <div class="close-btn" onclick="closeWindow('audioWindow')">X</div>
+    <div class="window" id="project2Window" style="top: 200px; left: 300px; width: 550px;">
+        <div class="title-bar" onmousedown="bringToFront('project2Window')">
+            <span>Another Masterpiece - Microsoft Internet Explorer</span>
+            <div class="close-btn" onclick="closeWindow('project2Window')">X</div>
         </div>
-        <div class="window-content media-container">
-            <div>
-                <h3>My Sound Design</h3>
-                <p>Listen to this absolute banger.</p>
-                <audio controls>
-                    <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
-                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
+        <div class="address-bar">
+            <span>Address</span>
+            <div class="address-input">http://www.myportfolio.com/projects/masterpiece.html</div>
+        </div>
+        <div class="window-content browser-content">
+            <h2>Project 2: The Sequel</h2>
+            <hr>
+            <br>
+            <p>More text about another incredible thing you built. Feel free to embed YouTube videos or standard image tags in here.</p>
         </div>
     </div>
 
@@ -147,33 +162,85 @@
     </div>
 
     <script>
-        // Open a window by bringing it to the front and displaying it
         let highestZ = 10;
+
+        // Window Management
         function openWindow(id) {
             const win = document.getElementById(id);
-            highestZ++;
-            win.style.zIndex = highestZ;
             win.style.display = 'flex';
+            bringToFront(id);
         }
 
-        // Close a window
         function closeWindow(id) {
             document.getElementById(id).style.display = 'none';
         }
 
-        // Update the taskbar clock
+        function bringToFront(id) {
+            const win = document.getElementById(id);
+            highestZ++;
+            win.style.zIndex = highestZ;
+        }
+
+        // Make windows draggable
+        function makeDraggable(windowEl) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            const titleBar = windowEl.querySelector('.title-bar');
+            
+            if (titleBar) {
+                titleBar.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+                bringToFront(windowEl.id);
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                windowEl.style.top = (windowEl.offsetTop - pos2) + "px";
+                windowEl.style.left = (windowEl.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        // Taskbar Clock
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
             let minutes = now.getMinutes();
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
+            hours = hours ? hours : 12; 
             minutes = minutes < 10 ? '0' + minutes : minutes;
             document.getElementById('clock').innerText = hours + ':' + minutes + ' ' + ampm;
         }
-        setInterval(updateClock, 1000);
-        updateClock(); // Initialize immediately
+
+        // Initialization on page load
+        window.onload = function() {
+            // Start the clock
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            // Apply drag functionality to all windows
+            document.querySelectorAll('.window').forEach(makeDraggable);
+
+            // Automatically open the About Me window
+            openWindow('aboutWindow');
+        };
     </script>
 </body>
 </html>
