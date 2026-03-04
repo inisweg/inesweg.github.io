@@ -3,295 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~*~ My PW0RFESSI0NAL Y2K W3B H0ME ~*~</title>
+    <title>My Wewwy Pworfessional Portfolio</title>
     <style>
-        /* --- CORE Y2K STYLING --- */
+        /* CSS Reset & Basic Setup */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            /* CRAZY SHINY BACKGROUND (Animated Gradient + Glitter Texture) */
-            background-color: #ff00ff; /* Clashing backup color */
-            background-image: 
-                url('https://upload.wikimedia.org/wikipedia/commons/e/ea/Blue_glitter_texture.jpg'),
-                linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-            background-blend-mode: overlay;
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
+            background-color: #008080;
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/2/21/Bliss_%28Windows_background%29.png');
             background-size: cover;
-            background-attachment: fixed;
-            
-            /* NUTS FONTS */
-            font-family: 'Comic Sans MS', 'Papyrus', cursive, sans-serif;
-            color: #ffff00; /* Neon yellow default text */
+            background-position: center;
             height: 100vh;
             overflow: hidden;
             user-select: none;
-            
-            /* Add some cursor sparkle if possible */
-            cursor: url('https://img.icons8.com/fluency/32/000000/sparkles.png'), auto;
         }
 
-        /* --- DESKTOP --- */
-        .desktop { padding: 10px; display: flex; flex-direction: column; flex-wrap: wrap; gap: 10px; height: calc(100vh - 40px); }
+        /* Desktop Icons */
+        .desktop { padding: 20px; display: flex; flex-direction: column; flex-wrap: wrap; gap: 20px; height: calc(100vh - 40px); }
         .icon {
-            width: 80px; text-align: center; cursor: pointer; color: white;
-            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000; font-size: 11px; font-weight: bold;
+            width: 75px; text-align: center; cursor: pointer; color: white;
+            text-shadow: 1px 1px 2px black; font-size: 12px;
         }
-        .icon img { width: 32px; height: 32px; margin-bottom: 3px; }
-        .icon:hover { text-decoration: underline; color: #ffff00; }
+        .icon img { width: 40px; height: 40px; margin-bottom: 5px; filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5)); }
+        .icon:hover img { filter: brightness(1.2) drop-shadow(2px 2px 2px rgba(0,0,0,0.5)); }
 
-        /* --- THE Y2K WINDOW (Base) --- */
-        .window {
-            position: absolute; width: 300px; /* Default small size */
-            background-color: #000080; /* Navy backup */
-            border: 3px solid #ffff00; /* Flashing default border */
-            border-style: ridge; /* Give it that weird beveled look */
-            display: none; flex-direction: column; z-index: 10;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.5);
-            animation: borderFlash 0.5s infinite alternate; /* YESSSS BORDER FLASH */
+        /* Start Menu */
+        .start-menu {
+            position: absolute; bottom: 35px; left: 0; width: 280px;
+            background-color: white; border: 2px solid #0058e6;
+            border-radius: 5px 5px 0 0; display: none; flex-direction: column;
+            box-shadow: 2px -2px 5px rgba(0,0,0,0.5); z-index: 100000;
         }
-        @keyframes borderFlash { 0% { border-color: #ffff00; } 100% { border-color: #ff00ff; } }
-
-        .title-bar {
-            background: repeating-linear-gradient(45deg, #0000ff, #0000ff 5px, #0000cc 5px, #0000cc 10px);
-            color: white; font-weight: bold; font-size: 12px; padding: 3px 5px;
-            display: flex; justify-content: space-between; align-items: center;
-            cursor: move; text-transform: uppercase; letter-spacing: 1px;
-            text-shadow: 1px 1px 0 #000;
+        .start-menu-header {
+            background: linear-gradient(to right, #1a449e, #3a93ff);
+            color: white; font-weight: bold; padding: 10px; display: flex; align-items: center; gap: 10px;
+            border-bottom: 2px solid #f98215; border-radius: 3px 3px 0 0; font-size: 16px;
         }
-        .close-btn {
-            background: #ff0000; color: white; border: 1px solid #ffffff;
-            width: 16px; height: 16px; font-size: 10px; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; font-family: sans-serif;
-        }
-        .close-btn:hover { background-color: #ffcccc; }
-        
-        .window-content { 
-            padding: 10px; flex-grow: 1; border-top: 2px solid #ffff00;
-            background: #000; max-height: 350px; overflow-y: auto; 
-            user-select: text; /* Let people copy text if they dare */
-            font-size: 12px; line-height: 1.2;
-        }
-        
-        /* CONTENT STYLING (The Y2K basics) */
-        h2 { font-size: 16px; color: #00ffff; margin-bottom: 8px; text-decoration: underline; text-align: center;}
-        p { color: #ffff00; margin-bottom: 10px; }
-        hr { border: 1px dashed #ff00ff; margin: 10px 0; }
-        a.old-web-link { color: #ff00ff; text-decoration: underline;}
-        a.old-web-link:hover { color: #ffff00; background: #0000ff;}
+        .start-menu-header img { width: 40px; height: 40px; border-radius: 3px; border: 2px solid white; background: white;}
+        .start-menu-body { display: flex; flex-direction: column; padding: 5px 0; background-color: #fff; min-height: 150px;}
+        .start-item { padding: 8px 15px; display: flex; align-items: center; gap: 10px; text-decoration: none; color: #333; font-size: 13px; cursor: pointer; }
+        .start-item:hover { background-color: #2f71cd; color: white; }
+        .start-item img { width: 24px; height: 24px; }
+        .start-menu-footer { background: linear-gradient(to right, #1a449e, #3a93ff); padding: 8px 10px; display: flex; justify-content: flex-end; gap: 15px; }
+        .footer-btn { display: flex; align-items: center; gap: 5px; color: white; font-size: 12px; cursor: pointer; }
+        .footer-btn:hover { text-decoration: underline; }
+        .footer-btn img { width: 20px; height: 20px; }
 
-        /* --- THEMED WINDOWS (Override Base) --- */
-
-        /* 1. ANALOG ARCHIVES (Autumnal/Cassette) */
-        .analog-window { border-color: #a52a2a; animation: none; background: #556b2f;} /* Forest Green/Brown */
-        .analog-window .title-bar { background: #4b0082; color: #ffdab9; } /* Deep Purple/Peach */
-        .analog-window .window-content { background-color: #2f4f4f; background-image: radial-gradient(#696969 1px, transparent 1px); background-size: 10px 10px; color: #ffdab9; font-family: 'Times New Roman', serif; }
-        .analog-window h2 { color: #ffdab9; text-transform: uppercase; font-weight: 100; font-family: cursive;}
-        .analog-window p { color: #cd853f;}
-
-        /* 2. UNIVERSITY RADIO NOTTINGHAM (URN1350) */
-        /* Inspired by bright, energetic student radio (Red/White/Black/Blue mashup) */
-        .urn-window { border-color: #ff0000; animation: borderFlashRed 0.3s infinite; }
-        @keyframes borderFlashRed { 0% { border-color: #ff0000; } 100% { border-color: #ffffff; } }
-        .urn-window .title-bar { background: #0000ff; color: #ffff00; text-align: center;}
-        .urn-window .window-content { background: #000; border-top: 3px solid #ff0000; font-family: 'Arial Black', sans-serif;}
-        .urn-window h2 { color: #ff0000; background: #ffff00; padding: 2px; text-transform: uppercase;}
-        .urn-window p { color: #ffffff; }
-
-        /* 3. UNI WORK (MS-DOS Terminal) */
-        .dos-window { border-color: #c0c0c0; border-style: outset; animation: none; width: 450px;} /* Classic gray */
-        .dos-window .title-bar { background: #000000; color: #c0c0c0; text-transform: none; }
-        .dos-window .window-content { background: #000000; font-family: 'Courier New', monospace; color: #00ff00; } /* GREEN ON BLACK */
-        .dos-window p, .dos-window h2 { color: #00ff00; text-align: left; text-decoration: none; text-shadow: 0 0 5px #00ff00;}
-
-        /* 4. GIGS (Broadway West End) */
-        .broadway-window { border-color: #ffd700; animation: marqueeLights 0.4s infinite; background: #8b0000; } /* Gold/Red */
-        @keyframes marqueeLights { 0% { box-shadow: 0 0 10px #ffd700; border-color: #ffd700;} 50% { box-shadow: 0 0 20px #ff4500; border-color: #ff4500;} 100% { box-shadow: 0 0 10px #ffd700; border-color: #ffd700;} }
-        .broadway-window .title-bar { background: #000; color: #ffd700; font-family: 'Georgia', serif; font-style: italic;}
-        .broadway-window .window-content { background: #000; color: #ffffff; font-family: 'Arial', sans-serif; text-shadow: 0 0 5px #ffd700;}
-        .broadway-window h2 { color: #ffd700; font-family: serif; letter-spacing: 2px; text-transform: uppercase; background: repeating-linear-gradient(90deg, #000, #000 2px, #ffd700 2px, #ffd700 4px);}
-        
-        /* 5. ABOUT ME (The raw Y2K default) */
-        .about-window { width: 350px;}
-
-        /* --- THE SCROLLING MARQUEE (Peak Y2K) --- */
-        marquee { background: #000080; color: #ffff00; font-weight: bold; border: 2px solid #ff00ff; padding: 3px; font-size: 14px; text-transform: uppercase;}
-
-        /* --- TASKBAR & START MENU --- */
+        /* Taskbar */
         .taskbar {
             position: absolute; bottom: 0; width: 100%; height: 35px;
-            background: repeating-linear-gradient(45deg, #0000cc, #0000cc 10px, #0000ff 10px, #0000ff 20px);
-            display: flex; align-items: center; z-index: 99999; border-top: 3px ridge #ffff00;
+            background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #1a449e 100%);
+            display: flex; align-items: center; z-index: 99999; border-top: 1px solid #0058e6;
         }
         .start-btn {
-            background: #00ff00; color: #000; font-weight: bold; font-family: 'Arial Black', sans-serif;
-            font-size: 12px; border: 2px outset #ffffff; height: calc(100% - 6px); padding: 0 10px; margin-left: 3px;
-            cursor: pointer; display: flex; align-items: center; gap: 3px; text-transform: uppercase;
+            background: linear-gradient(to bottom, #319A31, #186818); color: white;
+            font-weight: bold; font-style: italic; font-size: 16px; border: none;
+            height: 100%; padding: 0 20px; border-radius: 0 10px 10px 0;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.3); cursor: pointer; display: flex; align-items: center; gap: 5px;
         }
-        .start-btn:hover { background-color: #ffff00; }
-        .taskbar-time { margin-left: auto; color: white; font-size: 11px; padding: 0 10px; border-left: 2px solid #ffffff; height: 100%; display: flex; align-items: center; font-weight: bold; background: #000080;}
+        .start-btn:hover { background: linear-gradient(to bottom, #42b842, #1f851f); }
+        .taskbar-time { margin-left: auto; color: white; font-size: 12px; padding: 0 15px; border-left: 1px solid #1a449e; background: #0b93d5; height: 100%; display: flex; align-items: center; }
 
-        .start-menu {
-            position: absolute; bottom: 35px; left: 3px; width: 220px;
-            background-color: #c0c0c0; border: 3px outset #ffffff; display: none; flex-direction: column; z-index: 100000;
+        /* XP Windows - Cleaned up and set to 50% */
+        .window {
+            position: absolute; 
+            width: 50vw; /* 50% of viewport width */
+            height: 50vh; /* 50% of viewport height */
+            background-color: #ece9d8; border: 3px solid #0058e6;
+            border-radius: 8px 8px 0 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+            display: none; flex-direction: column; z-index: 10;
         }
-        .start-menu-header { background: #000080; color: white; font-weight: bold; padding: 5px; text-align: center; border-bottom: 2px solid #ffffff; font-size: 12px;}
-        .start-item { padding: 5px 10px; text-decoration: none; color: #000; font-size: 12px; display: flex; align-items: center; gap: 5px;}
-        .start-item:hover { background-color: #000080; color: #fff; }
-        .start-item img { width: 16px; height: 16px; }
+        .title-bar {
+            background: linear-gradient(to right, #0058e6, #3a93ff);
+            color: white; font-weight: bold; font-size: 13px; padding: 5px 10px;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: move; flex-shrink: 0;
+        }
+        .close-btn {
+            background-color: #e81123; color: white; border: 1px solid white; border-radius: 3px;
+            width: 20px; height: 20px; font-size: 12px; font-weight: bold; cursor: pointer;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .close-btn:hover { background-color: #f05a66; }
+        
+        .address-bar {
+            background-color: #f4f3ee; border-bottom: 1px solid #ccc; padding: 5px 10px;
+            font-size: 12px; display: flex; align-items: center; gap: 10px; color: #333; flex-shrink: 0;
+        }
+        .address-input { flex-grow: 1; border: 1px solid #7f9db9; padding: 2px 5px; background: white; color: #333; }
+
+        /* Window Content - Fills the 50vh height perfectly */
+        .window-content { 
+            padding: 20px; flex-grow: 1; border: 1px solid #aaa; margin: 5px; 
+            background: white; overflow-y: auto; user-select: text;
+        }
+
+        /* --- WEB 1.0 THEMES (Contained purely within the window content) --- */
+
+        /* 1. About Me (Clean Classic Web) */
+        .theme-about { font-family: 'Verdana', sans-serif; color: #333; }
+        .theme-about h2 { color: #0058e6; border-bottom: 2px dotted #ccc; padding-bottom: 5px; margin-bottom: 15px; }
+        .theme-about p { font-size: 13px; line-height: 1.6; margin-bottom: 15px; }
+
+        /* 2. Analog Archives (Autumnal, Forest Green, Deep Purple, Cassette) */
+        .theme-analog { 
+            background-color: #1a3c34; /* Deep forest green */
+            color: #e8dcc5; /* Warm off-white/autumnal */
+            font-family: 'Times New Roman', serif; 
+            border: 4px double #4a192c; /* Deep purple border inside */
+        }
+        .theme-analog h2 { color: #d99a5a; /* Autumnal orange/gold */ font-style: italic; border-bottom: 1px solid #4a192c; padding-bottom: 5px; margin-bottom: 15px; font-weight: normal; }
+        .theme-analog p { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+
+        /* 3. URN 1350 (University Radio Web 1.0 Style) */
+        .theme-urn {
+            background-color: #ffffff; color: #000000;
+            font-family: 'Arial', sans-serif;
+            border-top: 15px solid #cc0000; /* Bold red radio header */
+        }
+        .theme-urn h2 { color: #cc0000; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; font-size: 24px; }
+        .theme-urn .sub-head { background: #000; color: #fff; padding: 3px 5px; font-size: 11px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
+        .theme-urn p { font-size: 13px; line-height: 1.4; margin-bottom: 10px; }
+
+        /* 4. Uni Work (MS-DOS / Terminal) */
+        .theme-dos {
+            background-color: #000000; color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 10px;
+        }
+        .theme-dos p, .theme-dos h2 { color: #00ff00; font-size: 14px; line-height: 1.2; margin-bottom: 5px; font-weight: normal; }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* 5. Gigs (Broadway / West End) */
+        .theme-broadway {
+            background-color: #4a0404; /* Deep theater red */
+            color: #ffffff;
+            font-family: 'Georgia', serif;
+            border: 2px solid #b8860b; /* Dark goldenrod */
+            background-image: radial-gradient(circle, #5c0a0a 0%, #2e0000 100%);
+        }
+        .theme-broadway h2 { 
+            color: #ffd700; /* Gold */ 
+            text-align: center; text-transform: uppercase; letter-spacing: 2px;
+            border-bottom: 1px solid #ffd700; padding-bottom: 10px; margin-bottom: 15px;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .theme-broadway p { font-size: 14px; line-height: 1.6; margin-bottom: 15px; text-align: justify; }
 
     </style>
 </head>
 <body>
 
     <div class="desktop">
+        <div class="icon" onclick="openWindow('aboutWindow')">
+            <img src="https://img.icons8.com/color/48/000000/info.png" alt="About">
+            <span>About Me</span>
+        </div>
         <div class="icon" onclick="openWindow('analogWindow')">
-            <img src="https://img.icons8.com/fluency/48/000000/tape-drive.png" alt="Cassette">
+            <img src="https://img.icons8.com/color/48/000000/cassette.png" alt="Cassette">
             <span>Analog Archives</span>
         </div>
         <div class="icon" onclick="openWindow('urnWindow')">
-            <img src="https://img.icons8.com/fluency/48/000000/microphone.png" alt="Radio">
+            <img src="https://img.icons8.com/color/48/000000/microphone.png" alt="Radio">
             <span>U.R.N. 1350</span>
         </div>
         <div class="icon" onclick="openWindow('dosWindow')">
-            <img src="https://img.icons8.com/fluency/48/000000/console.png" alt="DOS">
+            <img src="https://img.icons8.com/color/48/000000/console.png" alt="DOS">
             <span>Uni Work</span>
         </div>
         <div class="icon" onclick="openWindow('broadwayWindow')">
-            <img src="https://img.icons8.com/fluency/48/000000/theater-curtains.png" alt="Gigs">
-            <span>Gigs / Shows</span>
-        </div>
-        <div class="icon" onclick="openWindow('aboutWindow')">
-            <img src="https://img.icons8.com/fluency/48/000000/sparkles.png" alt="About">
-            <span>About Me!!!</span>
+            <img src="https://img.icons8.com/color/48/000000/theater-curtains.png" alt="Gigs">
+            <span>Gigs</span>
         </div>
     </div>
 
-    <div class="window analog-window" id="analogWindow" style="top: 80px; left: 80px;">
-        <div class="title-bar" onmousedown="bringToFront('analogWindow')">
-            <span>Archive://Cassette_Vibe.txt</span>
-            <div class="close-btn" onclick="closeWindow('analogWindow')">X</div>
-        </div>
-        <div class="window-content">
-            <h2>Welcome to the Archives</h2>
-            <center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Compact_cassette_no_case.jpg/120px-Compact_cassette_no_case.jpg" alt="Tape GIF Placeholder" style="border: 2px solid peachpuff;"></center>
-            <hr>
-            <p>Welcome to the digital preservation of analog dreams. I collect sounds, tapes, and forgotten media.</p>
-            <p>This space is dedicated to deep forest greens, dusty purple vibes, and the warm hiss of magnetic tape.</p>
-        </div>
-    </div>
-
-    <div class="window urn-window" id="urnWindow" style="top: 120px; left: 140px; width: 380px;">
-        <div class="title-bar" onmousedown="bringToFront('urnWindow')">
-            <span>URN1350://0N_AIR.html</span>
-            <div class="close-btn" onclick="closeWindow('urnWindow')">X</div>
-        </div>
-        <div class="window-content">
-            <center><marquee scrollamount="5">*** YOU ARE LISTENING TO URN 1350 AM - NOTTINGHAM'S STUDENT STATION ***</marquee></center>
-            <br>
-            <h2>RADIO REVOLUTION</h2>
-            <hr>
-            <p>Broadcasting live from the University of Nottingham. This window is built in the spirit of URN's energetic web presence!</p>
-            <p>I do shows, produce content, and yell into microphones. Check the schedules!</p>
-            <center><img src="https://img.icons8.com/color/48/000000/audio-wave.png" alt="Wave GIF Placeholder"></center>
-        </div>
-    </div>
-
-    <div class="window dos-window" id="dosWindow" style="top: 150px; left: 200px;">
-        <div class="title-bar" onmousedown="bringToFront('dosWindow')">
-            <span>MS-DOS Prompt - UNI_WORK</span>
-            <div class="close-btn" onclick="closeWindow('dosWindow')">X</div>
-        </div>
-        <div class="window-content">
-            <p>Microsoft(R) Windows DOS<br>
-            (C)Copyright Microsoft Corp 1990-1999.</p>
-            <p>C:\> CD PROJECTS</p>
-            <p>C:\PROJECTS> DIR</p>
-            <p> Volume in drive C is WORK_DRIVE<br>
-            Volume Serial Number is 1337-CODE</p>
-            <p> Directory of C:\PROJECTS</p>
-            <p>.<br>
-            ..<br>
-            THESIS~1.DOC   1,234,567 11-12-98  Thesis<br>
-            CODE_D~1.CPP      45,678 10-01-99  Code<br>
-            RESEAR~1.PPT      99,123 09-15-99  Slides<br>
-                 3 File(s)    1,379,368 bytes<br>
-                 2 Dir(s)    9,999,999 bytes free</p>
-            <p>C:\PROJECTS> _<span style="animation: blink 1s infinite;">|</span></p>
-            <style>@keyframes blink { 0%, 100% {opacity: 1;} 50% {opacity: 0;} }</style>
-        </div>
-    </div>
-
-    <div class="window broadway-window" id="broadwayWindow" style="top: 190px; left: 260px; width: 400px;">
-        <div class="title-bar" onmousedown="bringToFront('broadwayWindow')">
-            <span>*~* LIVE ON STAGE *~*</span>
-            <div class="close-btn" onclick="closeWindow('broadwayWindow')">X</div>
-        </div>
-        <div class="window-content">
-            <h2>Theatrical Portfolio</h2>
-            <hr>
-            <p style="text-align: center;">Direct from the West End!</p>
-            <center><img src="https://img.icons8.com/color/48/000000/spotlight.png" alt="Spotlight GIF"></center>
-            <p>Welcome to the showcase of my live performances, sound design for theatre, and gig portfolio.</p>
-            <p>Where the spotlight shines brightest.</p>
-            <hr>
-            <p style="font-size: 10px; color: #ffd700;">Showtimes: MON-SAT 7:30PM</p>
-        </div>
-    </div>
-
-    <div class="window about-window" id="aboutWindow" style="top: 230px; left: 320px;">
+    <div class="window" id="aboutWindow" style="top: 10%; left: 10%;">
         <div class="title-bar" onmousedown="bringToFront('aboutWindow')">
-            <span>~~ My Y2K Web H0me ~~</span>
+            <span>About Me - Microsoft Internet Explorer</span>
             <div class="close-btn" onclick="closeWindow('aboutWindow')">X</div>
         </div>
-        <div class="window-content">
-            <center><marquee behavior="alternate" scrollamount="3">Welcome to my page! You are visitor #00001</marquee></center>
-            <br>
-            <h2>w3lc0m3, fw13nd</h2>
-            <center><img src="https://img.icons8.com/fluency/96/000000/sparkles.png" alt="Sparkles GIF" width="50"></center>
-            <hr>
-            <p>I am a super pworfessional individual using the power of HTML 4.0 to build the future!</p>
-            <p>Click my cool desktop icons to see my projects or check out my guestbook!</p>
-            <center><img src="https://img.icons8.com/color/48/000000/under-construction.png" alt="Under Construction"></center>
+        <div class="address-bar">
+            <span>Address</span><div class="address-input">C:\My Documents\Portfolio\about.html</div>
+        </div>
+        <div class="window-content theme-about">
+            <h2>About Me</h2>
+            <p>Hello! I am a highly professional individual building cool things on the internet.</p>
+            <p>Welcome to my desktop. Feel free to drag the windows around, explore my projects, and experience a cleaner slice of Web 1.0 nostalgia.</p>
         </div>
     </div>
 
-    <div style="position: absolute; top: 0; width: 100%; z-index: 1000;">
-        <marquee scrollamount="8">~~~ H3LL0 AND W3LC0M3 T0 MY AW3S0M3 P3RS0NAL P0RTF0LI0 S1T3... B3H0LD MY GEN1US... ADD M3 0N MSN G30C1T13S RUL3S ~~~</marquee>
+    <div class="window" id="analogWindow" style="top: 15%; left: 15%;">
+        <div class="title-bar" onmousedown="bringToFront('analogWindow')">
+            <span>Analog Archives - Microsoft Internet Explorer</span>
+            <div class="close-btn" onclick="closeWindow('analogWindow')">X</div>
+        </div>
+        <div class="address-bar">
+            <span>Address</span><div class="address-input">http://www.analog-archives.net</div>
+        </div>
+        <div class="window-content theme-analog">
+            <h2>The Analog Archives</h2>
+            <p>Welcome to the digital preservation of analog dreams. I collect sounds, tapes, and forgotten media.</p>
+            <p>This space is dedicated to the warm hiss of magnetic tape and the tactile feel of physical media.</p>
+        </div>
+    </div>
+
+    <div class="window" id="urnWindow" style="top: 20%; left: 20%;">
+        <div class="title-bar" onmousedown="bringToFront('urnWindow')">
+            <span>University Radio Nottingham - Microsoft Internet Explorer</span>
+            <div class="close-btn" onclick="closeWindow('urnWindow')">X</div>
+        </div>
+        <div class="address-bar">
+            <span>Address</span><div class="address-input">http://urn1350.co.uk/index.html</div>
+        </div>
+        <div class="window-content theme-urn">
+            <h2>URN 1350</h2>
+            <div class="sub-head">STUDENT RADIO FOR NOTTINGHAM</div>
+            <p>Broadcasting live from the University of Nottingham. This window captures the clean, bold, blocky energy of classic student radio web design.</p>
+            <p>Check out my show schedule, listen to past broadcasts, and explore my audio production work here.</p>
+        </div>
+    </div>
+
+    <div class="window" id="dosWindow" style="top: 25%; left: 25%;">
+        <div class="title-bar" onmousedown="bringToFront('dosWindow')">
+            <span>MS-DOS Prompt</span>
+            <div class="close-btn" onclick="closeWindow('dosWindow')">X</div>
+        </div>
+        <div class="window-content theme-dos">
+            <p>Microsoft(R) Windows DOS</p>
+            <p>(C)Copyright Microsoft Corp 1990-2001.</p>
+            <br>
+            <p>C:\> CD UNI_WORK</p>
+            <p>C:\UNI_WORK> DIR</p>
+            <br>
+            <p> Volume in drive C is WORK_DRIVE</p>
+            <p> Directory of C:\UNI_WORK</p>
+            <br>
+            <p>ESSAY1~1.DOC   1,234,567 11-12-00  Essay</p>
+            <p>PROJECT~1.CPP     45,678 10-01-01  Code</p>
+            <p>     2 File(s)    1,280,245 bytes</p>
+            <br>
+            <p>C:\UNI_WORK> <span class="cursor-blink">_</span></p>
+        </div>
+    </div>
+
+    <div class="window" id="broadwayWindow" style="top: 30%; left: 30%;">
+        <div class="title-bar" onmousedown="bringToFront('broadwayWindow')">
+            <span>Live Performances - Microsoft Internet Explorer</span>
+            <div class="close-btn" onclick="closeWindow('broadwayWindow')">X</div>
+        </div>
+        <div class="address-bar">
+            <span>Address</span><div class="address-input">http://www.westend-gigs.com</div>
+        </div>
+        <div class="window-content theme-broadway">
+            <h2>Live on Stage</h2>
+            <p>Welcome to the showcase of my live performances, theatrical sound design, and gig portfolio.</p>
+            <p>Direct from the West End, this section highlights the projects where the spotlight shines brightest, combining deep theater aesthetics with classic web typography.</p>
+        </div>
+    </div>
+
+    <div class="start-menu" id="startMenu">
+        <div class="start-menu-header">
+            <img src="https://img.icons8.com/color/48/000000/user-male-circle--v1.png" alt="User">
+            <span>Webmaster</span>
+        </div>
+        <div class="start-menu-body">
+            <a href="#" class="start-item"><img src="https://img.icons8.com/color/48/000000/github--v1.png" alt="GitHub"> GitHub</a>
+            <a href="#" class="start-item"><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn"> LinkedIn</a>
+            <div style="border-top: 1px solid #ccc; margin: 5px 10px;"></div>
+            <div class="start-item" onclick="openWindow('aboutWindow'); toggleStartMenu();"><img src="https://img.icons8.com/color/48/000000/info.png" alt="About"> About Me</div>
+        </div>
     </div>
 
     <div class="taskbar">
         <button class="start-btn" id="startBtn" onclick="toggleStartMenu()">
-            <img src="https://img.icons8.com/fluency/24/000000/star.png" alt="Star">
+            <img src="https://img.icons8.com/color/24/000000/windows-logo.png" alt="win" style="margin-right: 5px;">
             Start
         </button>
         <div class="taskbar-time" id="clock">12:00 PM</div>
     </div>
 
-    <div class="start-menu" id="startMenu">
-        <div class="start-menu-header">~ Webmaster Menu ~</div>
-        <a href="https://github.com" target="_blank" class="start-item">
-            <img src="https://img.icons8.com/color/16/000000/github.png" alt="GitHub"> GitHub
-        </a>
-        <a href="https://linkedin.com" target="_blank" class="start-item">
-            <img src="https://img.icons8.com/color/16/000000/linkedin.png" alt="LinkedIn"> LinkedIn
-        </a>
-        <a href="mailto:your.email@example.com" class="start-item">
-            <img src="https://img.icons8.com/color/16/000000/ms-outlook.png" alt="Email"> Contact
-        </a>
-        <div style="border-top: 1px solid #ffffff; margin: 3px 0;"></div>
-        <div class="start-item" onclick="openWindow('aboutWindow'); toggleStartMenu();">
-            <img src="https://img.icons8.com/fluency/16/000000/sparkles.png" alt="About"> About
-        </div>
-    </div>
-
     <script>
         let highestZ = 10;
 
-        // Start Menu
         function toggleStartMenu() {
             const menu = document.getElementById('startMenu');
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // Close start menu if clicked outside
         document.addEventListener('click', function(event) {
             const menu = document.getElementById('startMenu');
             const btn = document.getElementById('startBtn');
@@ -300,16 +299,15 @@
             }
         });
 
-        // Window Management
         function openWindow(id) {
             const win = document.getElementById(id);
             win.style.display = 'flex';
             bringToFront(id);
         }
+
         function closeWindow(id) { document.getElementById(id).style.display = 'none'; }
         function bringToFront(id) { document.getElementById(id).style.zIndex = ++highestZ; }
 
-        // Draggable windows
         function makeDraggable(windowEl) {
             let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             const titleBar = windowEl.querySelector('.title-bar');
@@ -317,8 +315,7 @@
             function dragMouseDown(e) {
                 e = e || window.event; e.preventDefault();
                 pos3 = e.clientX; pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                document.onmousemove = elementDrag;
+                document.onmouseup = closeDragElement; document.onmousemove = elementDrag;
                 bringToFront(windowEl.id);
             }
             function elementDrag(e) {
@@ -331,10 +328,9 @@
             function closeDragElement() { document.onmouseup = null; document.onmousemove = null; }
         }
 
-        // Clock
         function updateClock() {
             const now = new Date();
-            let h = now.getHours(); let m = now.getMinutes();
+            let h = now.getHours(), m = now.getMinutes();
             const ampm = h >= 12 ? 'PM' : 'AM';
             h = h % 12 || 12; m = m < 10 ? '0'+m : m;
             document.getElementById('clock').innerText = h + ':' + m + ' ' + ampm;
@@ -343,8 +339,8 @@
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
             document.querySelectorAll('.window').forEach(makeDraggable);
-            // Stack windows neatly
-            openWindow('dosWindow'); openWindow('broadwayWindow'); openWindow('urnWindow'); openWindow('analogWindow'); openWindow('aboutWindow');
+            // Open the 'About Me' window automatically on load
+            openWindow('aboutWindow');
         };
     </script>
 </body>
