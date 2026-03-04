@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wewwy Pworfessional Portfolio</title>
+    <style>
+        /* CSS Reset & Basic Setup */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
+            background-color: #008080; /* Classic Windows Teal fallback */
+            /* Replace the URL below with an actual link to the Bliss wallpaper to complete the vibe! */
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/2/21/Bliss_%28Windows_background%29.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* Desktop Icons */
+        .desktop { padding: 20px; display: flex; flex-direction: column; gap: 20px; height: calc(100vh - 40px); }
+        .icon {
+            width: 75px; text-align: center; cursor: pointer; color: white;
+            text-shadow: 1px 1px 2px black; font-size: 12px;
+        }
+        .icon img { width: 40px; height: 40px; margin-bottom: 5px; filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5)); }
+        .icon:hover img { filter: brightness(1.2) drop-shadow(2px 2px 2px rgba(0,0,0,0.5)); }
+
+        /* XP Taskbar */
+        .taskbar {
+            position: absolute; bottom: 0; width: 100%; height: 35px;
+            background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #1a449e 100%);
+            display: flex; align-items: center; z-index: 9999; border-top: 1px solid #0058e6;
+        }
+        .start-btn {
+            background: linear-gradient(to bottom, #319A31, #186818); color: white;
+            font-weight: bold; font-style: italic; font-size: 16px; border: none;
+            height: 100%; padding: 0 20px; border-radius: 0 10px 10px 0;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.3); cursor: pointer; display: flex; align-items: center; gap: 5px;
+        }
+        .start-btn:hover { background: linear-gradient(to bottom, #42b842, #1f851f); }
+        .taskbar-time { margin-left: auto; color: white; font-size: 12px; padding: 0 15px; border-left: 1px solid #1a449e; background: #0b93d5; height: 100%; display: flex; align-items: center; }
+
+        /* XP Windows */
+        .window {
+            position: absolute; top: 100px; left: 150px; width: 450px;
+            background-color: #ece9d8; border: 3px solid #0058e6;
+            border-radius: 8px 8px 0 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+            display: none; flex-direction: column; z-index: 10;
+        }
+        .title-bar {
+            background: linear-gradient(to right, #0058e6, #3a93ff);
+            color: white; font-weight: bold; font-size: 13px; padding: 5px 10px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .close-btn {
+            background-color: #e81123; color: white; border: 1px solid white; border-radius: 3px;
+            width: 20px; height: 20px; font-size: 12px; font-weight: bold; cursor: pointer;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .close-btn:hover { background-color: #f05a66; }
+        .window-content { padding: 15px; flex-grow: 1; border: 1px solid #aaa; margin: 5px; background: white; max-height: 400px; overflow-y: auto;}
+        
+        /* Media Styling */
+        .media-container { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        img.portfolio-pic, video { max-width: 100%; border: 1px solid #ccc; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
+        audio { width: 100%; }
+        h3 { font-size: 16px; margin-bottom: 5px; color: #333; }
+        p { font-size: 12px; color: #666; margin-bottom: 10px;}
+
+    </style>
+</head>
+<body>
+
+    <div class="desktop">
+        <div class="icon" onclick="openWindow('videoWindow')">
+            <img src="https://img.icons8.com/color/48/000000/video-file.png" alt="Videos">
+            <span>My Videos</span>
+        </div>
+        <div class="icon" onclick="openWindow('photoWindow')">
+            <img src="https://img.icons8.com/color/48/000000/image-file.png" alt="Photos">
+            <span>My Photos</span>
+        </div>
+        <div class="icon" onclick="openWindow('audioWindow')">
+            <img src="https://img.icons8.com/color/48/000000/audio-file.png" alt="Audio">
+            <span>Sick Tunez</span>
+        </div>
+    </div>
+
+    <div class="window" id="videoWindow" style="top: 50px; left: 100px;">
+        <div class="title-bar">
+            <span>My Videos</span>
+            <div class="close-btn" onclick="closeWindow('videoWindow')">X</div>
+        </div>
+        <div class="window-content media-container">
+            <div>
+                <h3>My Pworfessional Video</h3>
+                <p>Behold my moving pictures.</p>
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="photoWindow" style="top: 80px; left: 180px;">
+        <div class="title-bar">
+            <span>My Photos</span>
+            <div class="close-btn" onclick="closeWindow('photoWindow')">X</div>
+        </div>
+        <div class="window-content media-container">
+            <div>
+                <h3>A Very Nice Photo</h3>
+                <p>Look at this distinguished image.</p>
+                <img class="portfolio-pic" src="https://images.unsplash.com/photo-1541513280068-07b140af9ce6?q=80&w=400&auto=format&fit=crop" alt="Placeholder Puppy">
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="audioWindow" style="top: 120px; left: 250px;">
+        <div class="title-bar">
+            <span>Sick Tunez (Audio)</span>
+            <div class="close-btn" onclick="closeWindow('audioWindow')">X</div>
+        </div>
+        <div class="window-content media-container">
+            <div>
+                <h3>My Sound Design</h3>
+                <p>Listen to this absolute banger.</p>
+                <audio controls>
+                    <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <button class="start-btn">
+            <img src="https://img.icons8.com/color/24/000000/windows-logo.png" alt="win" style="margin-right: 5px;">
+            Start
+        </button>
+        <div class="taskbar-time" id="clock">12:00 PM</div>
+    </div>
+
+    <script>
+        // Open a window by bringing it to the front and displaying it
+        let highestZ = 10;
+        function openWindow(id) {
+            const win = document.getElementById(id);
+            highestZ++;
+            win.style.zIndex = highestZ;
+            win.style.display = 'flex';
+        }
+
+        // Close a window
+        function closeWindow(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // Update the taskbar clock
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('clock').innerText = hours + ':' + minutes + ' ' + ampm;
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // Initialize immediately
+    </script>
+</body>
+</html>
