@@ -42,6 +42,34 @@
         .start-btn:hover { background: linear-gradient(to bottom, #42b842, #1f851f); }
         .taskbar-time { margin-left: auto; color: white; font-size: 12px; padding: 0 15px; border-left: 1px solid #1a449e; background: #0b93d5; height: 100%; display: flex; align-items: center; }
 
+        /* Start Menu */
+        .start-menu {
+            position: absolute; bottom: 35px; left: 0; width: 280px;
+            background-color: white; border: 2px solid #0058e6;
+            border-radius: 5px 5px 0 0; display: none; flex-direction: column;
+            box-shadow: 2px -2px 5px rgba(0,0,0,0.5); z-index: 100000;
+        }
+        .start-menu-header {
+            background: linear-gradient(to right, #1a449e, #3a93ff);
+            color: white; font-weight: bold; padding: 10px; display: flex; align-items: center; gap: 10px;
+            border-bottom: 2px solid #f98215; border-radius: 3px 3px 0 0; font-size: 16px;
+        }
+        .start-menu-header img { width: 40px; height: 40px; border-radius: 3px; border: 2px solid white; background: white;}
+        .start-menu-body { display: flex; flex-direction: column; padding: 5px 0; background-color: #fff; min-height: 150px;}
+        .start-item {
+            padding: 8px 15px; display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: #333; font-size: 13px; cursor: pointer;
+        }
+        .start-item:hover { background-color: #2f71cd; color: white; }
+        .start-item img { width: 24px; height: 24px; }
+        .start-menu-footer {
+            background: linear-gradient(to right, #1a449e, #3a93ff);
+            padding: 8px 10px; display: flex; justify-content: flex-end; gap: 15px;
+        }
+        .footer-btn { display: flex; align-items: center; gap: 5px; color: white; font-size: 12px; cursor: pointer; }
+        .footer-btn:hover { text-decoration: underline; }
+        .footer-btn img { width: 20px; height: 20px; }
+
         /* XP Windows */
         .window {
             position: absolute; top: 50px; left: 50px; width: 450px;
@@ -53,7 +81,7 @@
             background: linear-gradient(to right, #0058e6, #3a93ff);
             color: white; font-weight: bold; font-size: 13px; padding: 5px 10px;
             display: flex; justify-content: space-between; align-items: center;
-            cursor: move; /* Shows the user they can drag it */
+            cursor: move;
         }
         .close-btn {
             background-color: #e81123; color: white; border: 1px solid white; border-radius: 3px;
@@ -62,7 +90,6 @@
         }
         .close-btn:hover { background-color: #f05a66; }
         
-        /* Browser-style elements for project windows */
         .address-bar {
             background-color: #f4f3ee; border-bottom: 1px solid #ccc; padding: 5px 10px;
             font-size: 12px; display: flex; align-items: center; gap: 10px; color: #333;
@@ -76,16 +103,15 @@
             background: white; max-height: 400px; overflow-y: auto; user-select: text;
         }
         
-        /* Content Styling */
         h2 { font-size: 18px; color: #0058e6; margin-bottom: 10px; }
         p { font-size: 13px; color: #333; margin-bottom: 15px; line-height: 1.4; }
-        .browser-content { font-family: 'Times New Roman', serif; } /* Classic 90s web font */
+        .browser-content { font-family: 'Times New Roman', serif; }
 
     </style>
 </head>
 <body>
 
-    <div class="desktop">
+    <div class="desktop" id="desktop-bg">
         <div class="icon" onclick="openWindow('aboutWindow')">
             <img src="https://img.icons8.com/color/48/000000/info.png" alt="About">
             <span>About Me</span>
@@ -109,7 +135,7 @@
         <div class="window-content" style="font-family: 'Courier New', Courier, monospace;">
             <p>Hello world!</p>
             <p>I am a highly pworfessional individual who builds cool things on the internet.</p>
-            <p>Click the folders on the desktop to see my traditional web projects, or drag these windows around because it is extremely satisfying.</p>
+            <p>Click the folders on the desktop to see my traditional web projects, or check out my Start Menu down below.</p>
         </div>
     </div>
 
@@ -124,10 +150,8 @@
         </div>
         <div class="window-content browser-content">
             <h2>Welcome to Project 1</h2>
-            <hr>
-            <br>
+            <hr><br>
             <p>This is where you can describe your first project. Notice how it uses Times New Roman to look like an old-school HTML webpage loaded inside the XP window.</p>
-            <p>You can add images, links, or lists here just like a normal webpage.</p>
             <ul>
                 <li>Feature A</li>
                 <li>Feature B</li>
@@ -147,14 +171,46 @@
         </div>
         <div class="window-content browser-content">
             <h2>Project 2: The Sequel</h2>
-            <hr>
-            <br>
-            <p>More text about another incredible thing you built. Feel free to embed YouTube videos or standard image tags in here.</p>
+            <hr><br>
+            <p>More text about another incredible thing you built.</p>
+        </div>
+    </div>
+
+    <div class="start-menu" id="startMenu">
+        <div class="start-menu-header">
+            <img src="https://img.icons8.com/color/48/000000/user-male-circle--v1.png" alt="User">
+            <span>Webmaster Extravaganza</span>
+        </div>
+        
+        <div class="start-menu-body">
+            <a href="https://github.com" target="_blank" class="start-item">
+                <img src="https://img.icons8.com/color/48/000000/github--v1.png" alt="GitHub">
+                <span>My GitHub Repo</span>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="start-item">
+                <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn">
+                <span>My LinkedIn</span>
+            </a>
+            <a href="mailto:your.email@example.com" class="start-item">
+                <img src="https://img.icons8.com/color/48/000000/ms-outlook.png" alt="Email">
+                <span>Send me an Email</span>
+            </a>
+            <div style="border-top: 1px solid #ccc; margin: 5px 10px;"></div> <div class="start-item" onclick="openWindow('aboutWindow'); toggleStartMenu();">
+                <img src="https://img.icons8.com/color/48/000000/info.png" alt="About">
+                <span>Re-open About Me</span>
+            </div>
+        </div>
+
+        <div class="start-menu-footer">
+            <div class="footer-btn" onclick="alert('You cannot escape the 2000s.')">
+                <img src="https://img.icons8.com/color/48/000000/shutdown.png" alt="Log Off">
+                <span>Turn Off Computer</span>
+            </div>
         </div>
     </div>
 
     <div class="taskbar">
-        <button class="start-btn">
+        <button class="start-btn" id="startBtn" onclick="toggleStartMenu()">
             <img src="https://img.icons8.com/color/24/000000/windows-logo.png" alt="win" style="margin-right: 5px;">
             Start
         </button>
@@ -163,6 +219,22 @@
 
     <script>
         let highestZ = 10;
+
+        // Start Menu Logic
+        function toggleStartMenu() {
+            const menu = document.getElementById('startMenu');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // Close start menu if clicked outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('startMenu');
+            const btn = document.getElementById('startBtn');
+            // If the click is not inside the menu AND not on the start button, close it
+            if (menu.style.display === 'flex' && !menu.contains(event.target) && !btn.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
 
         // Window Management
         function openWindow(id) {
@@ -231,14 +303,9 @@
 
         // Initialization on page load
         window.onload = function() {
-            // Start the clock
             setInterval(updateClock, 1000);
             updateClock();
-
-            // Apply drag functionality to all windows
             document.querySelectorAll('.window').forEach(makeDraggable);
-
-            // Automatically open the About Me window
             openWindow('aboutWindow');
         };
     </script>
