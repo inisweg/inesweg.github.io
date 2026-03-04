@@ -97,18 +97,16 @@
         .media-wrapper {
             margin: 15px 0;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1); /* Subtle background for contrast in dark themes */
-            border: 2px inset rgba(150, 150, 150, 0.5); /* Classic Web 1.0 inset border */
+            background-color: rgba(255, 255, 255, 0.1); 
+            border: 2px inset rgba(150, 150, 150, 0.5); 
             text-align: center;
         }
-        /* Make sure images and videos don't break out of the 50vw window */
         .media-wrapper img, .media-wrapper video {
             max-width: 100%;
             height: auto;
             border: 1px solid #000;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
         }
-        /* Audio players stretch to fill the wrapper nicely */
         .media-wrapper audio {
             width: 100%;
             margin-top: 10px;
@@ -131,9 +129,10 @@
         }
         .theme-analog h2 { color: #d99a5a; font-style: italic; border-bottom: 1px solid #4a192c; padding-bottom: 5px; margin-bottom: 15px; font-weight: normal; }
 
-        .theme-urn { background-color: #ffffff; color: #000000; font-family: 'Arial', sans-serif; border-top: 15px solid #cc0000; }
-        .theme-urn h2 { color: #cc0000; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; font-size: 24px; }
-        .theme-urn .sub-head { background: #000; color: #fff; padding: 3px 5px; font-size: 11px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
+        /* URN Purple Theme Update */
+        .theme-urn { background-color: #ffffff; color: #000000; font-family: 'Arial', sans-serif; border-top: 15px solid #5e2ca5; }
+        .theme-urn h2 { color: #5e2ca5; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; font-size: 24px; }
+        .theme-urn .sub-head { background: #5e2ca5; color: #fff; padding: 3px 5px; font-size: 11px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
 
         .theme-dos { background-color: #000000; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 10px; }
         .theme-dos p, .theme-dos h2 { color: #00ff00; font-size: 14px; line-height: 1.2; margin-bottom: 5px; font-weight: normal; }
@@ -265,13 +264,32 @@
         </div>
         <div class="window-content theme-dos">
             <p>C:\> CD UNI_WORK</p>
-            <p>C:\UNI_WORK> TYPE PROJECT_INFO.TXT</p>
+            <p>C:\UNI_WORK> DIR MEDIA</p>
             <br>
-            <p>Here is an example of an algorithm diagram I created for my final year project:</p>
+            <p>Here are the project files loaded from the local server:</p>
 
             <div class="media-wrapper" style="border-color: #00ff00; background: #002200;">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=400&auto=format&fit=crop" alt="Code block" style="filter: grayscale(100%) contrast(150%); border-color: #00ff00;">
-                <span class="media-caption" style="color: #00ff00;">[FIG 1.1 - ALGORITHM RENDER]</span>
+                <video controls style="border-color: #00ff00; width: 100%;">
+                    <source src="./pages/your-video-file.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+                <span class="media-caption" style="color: #00ff00;">[EXEC: PROJECT_DEMO.MP4]</span>
+            </div>
+
+            <div class="media-wrapper" style="border-color: #00ff00; background: #002200;">
+                <audio controls style="width: 100%;">
+                    <source src="./pages/your-audio-1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <span class="media-caption" style="color: #00ff00;">[PLAYING: SOUND_LOG_01.WAV]</span>
+            </div>
+
+            <div class="media-wrapper" style="border-color: #00ff00; background: #002200;">
+                <audio controls style="width: 100%;">
+                    <source src="./pages/your-audio-2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <span class="media-caption" style="color: #00ff00;">[PLAYING: SOUND_LOG_02.WAV]</span>
             </div>
 
             <p>C:\UNI_WORK> _</p>
